@@ -1,8 +1,11 @@
+import os
+from dotenv import load_dotenv
 from sqlmodel import create_engine, Session
 
 # 1. DB 접속 정보 설정 (이미지에서 설정한 정보와 일치해야 함)
 # 형식: postgresql://사용자:비밀번호@호스트:포트/DB이름
-DATABASE_URL = "postgresql://hajunkim:1q2w3e4r@127.0.0.1:5432/gold_db"
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
 # 2. 엔진 생성
 engine = create_engine(DATABASE_URL, echo=True)  # echo=True는 SQL 로그를 터미널에 보여
 
